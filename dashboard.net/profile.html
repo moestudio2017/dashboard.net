@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<!--/言語設定/-->
+<html lang="ja">
+
+<!--/設定など/-->
+<head>
+
+<!--/meta情報の設定/-->
+	<meta charset="UTF-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="robots" content="noindex,nofollow">
+	<meta name="author" content="noeroti"> 
+
+<!--/モバイル用追加設定/--> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!--/CSSファイルの読み込み/-->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/theme.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/icomoon.css">
+	<link rel="stylesheet" type="text/css" href="css/animate-custom.css">
+
+<!--/JavaScriptの読み込み/--> 
+	<script type="text/javascript" src="js/KiiSDK.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.blockUI.js"></script>
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/modernizr.custom.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.js"></script>
+
+<!--/開閉メニュー設定/-->
+ <script>
+  (function($) {
+    'use strict';
+    // Collapseイベント
+    $('#menu, #menu1').on({
+      // 折り畳み開く処理
+      'show.bs.collapse': function() {
+        $('a[href="#' + this.id + '"] span.glyphicon-chevron-down')
+          .removeClass('glyphicon-chevron-down')
+          .addClass('glyphicon-chevron-up');
+      },
+      // 折り畳み閉じる処理
+      'hide.bs.collapse': function() {
+        $('a[href="#' + this.id + '"] span.glyphicon-chevron-up')
+          .removeClass('glyphicon-chevron-up')
+          .addClass('glyphicon-chevron-down');
+      }
+    });
+    // ハッシュリンクキャンセル
+    $('a[href="#menu"], a[href="#menu1"]').on('click', function(event) {
+      event.preventDefault();
+    });
+  })(jQuery);
+  </script>
+</head>
+
+<body>
+
+<!--/メニュー部分/-->
+<!--/href="menu"とid="menu"は対応させること。/-->
+<div id="menu">
+    <div class="container">
+       <div class="row">
+        <div class="panel list-group">
+            <a href="#menu1" class="list-group-item" data-toggle="collapse" data-target="#menu1" data-parent="#menu"><span class="glyphicon glyphicon-user"></span> プロファイル<span class="glyphicon glyphicon-chevron-down pull-right"></span>
+            </a>
+<!--/文章とグラフ/-->
+            <div id="menu1" class="sublinks collapse">
+               <div class="col-md-6">
+                <div class="glypharray">
+                    <canvas id="LineChart1" width="300" height="150" style="width: 300px; height: 150px;"></canvas>
+                </div>
+                <div class="glypharray">
+                    <canvas id="LineChart2" width="300" height="150" style="width: 300px; height: 150px;"></canvas>
+                </div>
+               </div>
+               <div class="col-md-6">
+                <div class="glypharray">
+<!--/グラフ/--><canvas id="RaderChart" style="width: 300px; height: 300px;" width="300" height="300"></canvas>
+
+<!--/グラフデーター/-->
+<!--/ラインチャート/-->
+<script>
+    new Chart(document.getElementById("LineChart1"),{
+        "type":"line",
+        "data":{
+            "labels":["January","February","March","April","May","June","July"],
+            "datasets":[{
+                "label":"Lorem ipsum.",
+                "data":[65,59,80,81,56,55,40],
+                "fill":false,
+                "borderColor":"rgb(75, 192, 192)",
+                "lineTension":0.1}]},
+        "options":{}});
+</script>
+<script>
+    new Chart(document.getElementById("LineChart2"),{
+        "type":"line",
+        "data":{
+            "labels":["Sunday","Monday","Tuesday","Wednesday","Thusday","Saturday"],
+            "datasets":[{
+                "label":"Lorem ipsum.",
+                "data":[12,34,56,39,80,27],
+                "fill":false,
+                "borderColor":"rgb(16, 229, 82)",
+                "lineTension":0.1}]},
+        "options":{}});
+</script>
+<!--/レーダーチャート/-->
+<script>
+new Chart(document.getElementById("RaderChart"),{
+    "type":"radar",
+    "data":{
+        "labels":["A","B","C","D","E","F"],
+        "datasets":[{"label":"Girl",
+                     "data":[65,59,67,81,37,55],
+                     "fill":true,
+                     "backgroundColor":"rgba(255, 99, 132, 0.2)",
+                     "borderColor":"rgb(255, 99, 132)",
+                     "pointBackgroundColor":"rgb(255, 99,132)",
+                     "pointBorderColor":"#fff",
+                     "pointHoverBackgroundColor":"#fff",
+                     "pointHoverBorderColor":"rgb(255, 99, 132)"},
+                    {"label":"Boy",
+                     "data":[28,48,40,19,96,27],
+                     "fill":true,
+                     "backgroundColor":"rgba(15, 47, 222, 0.2)",
+                     "borderColor":"rgb(54, 162, 235)",
+                     "pointBackgroundColor":"rgb(54, 162,235)",
+                     "pointBorderColor":"#fff",
+                     "pointHoverBackgroundColor":"#fff",
+                     "pointHoverBorderColor":"rgb(54, 162, 235)"}]},
+    "options":{
+        "elements":{
+            "line":{
+                "tension":0,
+                "borderWidth":3
+            }
+        }
+    }
+});
+</script>
+                  </div>
+                </div>
+  
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+</body>
+    
+</html>
